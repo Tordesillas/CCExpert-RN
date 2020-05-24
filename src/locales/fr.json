@@ -1,0 +1,64 @@
+{
+  "menu": {
+    "advices": "Recommandations",
+    "encyclopedia": "Encyclopédie",
+    "simulators": "Simulateurs"
+  },
+  "heroes": {
+    "title": "Héros"
+  },
+  "dungeons": {
+    "title": "Donjons"
+  },
+  "archdemons": {
+    "title": "Archidémons"
+  },
+  "talents": {
+    "title": "Talents"
+  },
+  "enchantments": {
+    "title": "Enchantements"
+  },
+  "pets": {
+    "title": "Familiers"
+  },
+  "guild-war": {
+    "title": "Guerre de guilde"
+  },
+  "talent-level": {
+    "title": "Niveau du talent"
+  },
+  "inscription": {
+    "title": "Inscription"
+  },
+  "equipment": {
+    "title": "Équipement"
+  },
+  "dodge": {
+    "title": "Esquive"
+  },
+  "accuracy": {
+    "title": "Précision"
+  },
+  "attack-speed": {
+    "title": "Vitesse d'attaque"
+  },
+  "destiny": {
+    "title": "Destinée"
+  },
+  "protectors": {
+    "title": "Gardiens"
+  },
+  "skin-level": {
+    "title": "Niveau du skin"
+  },
+  "roll-simulator": {
+    "title": "Simulateur de tirages"
+  },
+  "pet-level": {
+    "title": "Niveau du familier"
+  },
+  "breakthrough-levels": {
+    "title": "Super évolution"
+  }
+}

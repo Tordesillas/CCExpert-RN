@@ -1,0 +1,64 @@
+{
+  "menu": {
+    "advices": "Advices",
+    "encyclopedia": "Encyclopedia",
+    "simulators": "Simulators"
+  },
+  "heroes": {
+    "title": "Heroes"
+  },
+  "dungeons": {
+    "title": "Dungeons"
+  },
+  "archdemons": {
+    "title": "Archdemons"
+  },
+  "talents": {
+    "title": "Talents"
+  },
+  "enchantments": {
+    "title": "Enchantments"
+  },
+  "pets": {
+    "title": "Pets"
+  },
+  "guild-war": {
+    "title": "Guild war"
+  },
+  "talent-level": {
+    "title": "Talent level"
+  },
+  "inscription": {
+    "title": "Inscription"
+  },
+  "equipment": {
+    "title": "Equipment"
+  },
+  "dodge": {
+    "title": "Dodge"
+  },
+  "accuracy": {
+    "title": "Accuracy"
+  },
+  "attack-speed": {
+    "title": "Attack speed"
+  },
+  "destiny": {
+    "title": "Destiny"
+  },
+  "protectors": {
+    "title": "Protectors"
+  },
+  "skin-level": {
+    "title": "Skin level"
+  },
+  "roll-simulator": {
+    "title": "Roll simulator"
+  },
+  "pet-level": {
+    "title": "Pet level"
+  },
+  "breakthrough-levels": {
+    "title": "Breakthrough levels"
+  }
+}
