@@ -5,7 +5,8 @@ import {initReactI18next} from 'react-i18next';
 import translationEN from '../locales/en.json';
 import translationFR from '../locales/fr.json';
 
-const LANGUAGE = "language";
+const LANGUAGE = 'language';
+const DEFAULT_LANGUAGE = 'en';
 
 export default class LocalizationService {
     static className = 'LocalizationService';
@@ -21,7 +22,6 @@ export default class LocalizationService {
 
     async setLanguage(language: string) {
         if (i18next.isInitialized && language !== this.language) {
-            console.log('LANg', language)
             await i18next.changeLanguage(language);
         }
         if (!i18next.isInitialized) {
@@ -48,8 +48,13 @@ export default class LocalizationService {
             this.language = await AsyncStorage.getItem(LANGUAGE);
         }
         if (!this.language) {
-            this.language = RNLocalize.findBestAvailableLanguage(Object.keys(this.resources)).languageTag;
+            const bestLanguage = RNLocalize.findBestAvailableLanguage(Object.keys(this.resources));
+            this.language = bestLanguage ? bestLanguage.languageTag : DEFAULT_LANGUAGE;
         }
         return this.language;
+    }
+
+    getLanguage() {
+        return this.language || DEFAULT_LANGUAGE;
     }
 }

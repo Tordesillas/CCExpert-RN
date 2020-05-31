@@ -1,9 +1,10 @@
 import React from 'react';
 import {StatusBar} from 'react-native';
 import RNBootSplash from 'react-native-bootsplash';
+import AppNavigator from './src/routes/appNavigator';
+import Database from './src/models/Database';
 import {LocalizationService, Registry} from './src/services';
 import {Colors} from './src/utils';
-import AppNavigator from './src/routes/appNavigator';
 
 export default class App extends React.Component {
     constructor(props) {
@@ -16,13 +17,14 @@ export default class App extends React.Component {
         };
     }
 
-    componentDidMount() {
-        this.localizationService.getLanguageSafe().then(language => {
-            this.localizationService.setLanguage(language).then(() => {
-                this.setState({loading: false});
-                setTimeout(() => RNBootSplash.hide(), 10);
-            });
-        });
+    async componentDidMount() {
+        await Database.get().initDB();
+
+        const language = await this.localizationService.getLanguageSafe();
+        await this.localizationService.setLanguage(language);
+
+        this.setState({loading: false});
+        setTimeout(() => RNBootSplash.hide(), 10);
     }
 
     render() {
