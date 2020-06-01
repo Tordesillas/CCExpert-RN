@@ -1,9 +1,11 @@
 // @flow
 
 import React from 'react';
-import {Dimensions, FlatList, SafeAreaView, StyleSheet, TouchableOpacity, View} from 'react-native';
+import {Dimensions, FlatList, SafeAreaView, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import _ from 'lodash';
 import {withTranslation} from 'react-i18next';
 import {HeroCard, TextField} from '../../components';
+import {SortByAlphabet, SortByNumber} from '../../components/icons';
 import Sets from '../../models/Sets';
 import {Colors} from '../../utils';
 
@@ -13,24 +15,35 @@ class Heroes extends React.Component {
 
         this.heroes = Sets.get().heroes;
         this.cardSize = Dimensions.get('window').width / 3 - 6;
-        this.filterMode = 'id';
 
         this.state = {
             heroSearch: "",
-            heroDisplayed: this.heroes.sort((h1, h2) => h2.id - h1.id)
+            heroDisplayed: this.heroes.sort((h1, h2) => h2.id - h1.id),
+            filterMode: 'id'
         };
+
+        this.filterHeroesDelayed = _.debounce(this.filterHeroes, 200);
     }
 
     filterHeroes() {
-        if (this.filterMode === 'id') {
-            this.setState({heroDisplayed: this.heroes.sort((h1, h2) => h2.id - h1.id)});
+        let filteredHeroes = [...this.heroes];
+        let filter = this.state.heroSearch;
+
+        if (filter && filter.length > 0) {
+            filter = filter.toLowerCase();
+            filteredHeroes = filteredHeroes.filter((hero) => hero.getName().toLowerCase().includes(filter));
+        }
+
+        if (this.state.filterMode === 'id') {
+            this.setState({heroDisplayed: filteredHeroes.sort((h1, h2) => h2.id - h1.id)});
         } else {
-            this.setState({heroDisplayed: this.heroes.sort((h1, h2) => h1.nameFR.localeCompare(h2.nameFR))});
+            this.setState({heroDisplayed: filteredHeroes.sort((h1, h2) => h1.getName().localeCompare(h2.getName()))});
         }
     }
 
     render() {
-        const {heroSearch, heroDisplayed} = this.state;
+        const {t} = this.props;
+        const {heroSearch, heroDisplayed, filterMode} = this.state;
 
         return (
             <SafeAreaView style={styles.main_container}>
@@ -38,15 +51,21 @@ class Heroes extends React.Component {
                     <TextField
                         style={{flex: 1}}
                         value={heroSearch}
-                        placeholder={"Chercher un héros"}
-                        keyboardType="default"
-                        returnKeyType="done"
-                        onChangeText={(text) => this.setState({heroSearch: text}, () => this.filterHeroes())}
+                        placeholder={t('heroes.hero-search')}
+                        keyboardType='default'
+                        returnKeyType='done'
+                        onChangeText={(text) => this.setState({heroSearch: text}, () => this.filterHeroesDelayed())}
                     />
                     <TouchableOpacity
                         style={styles.filter_button}
-                        onPress={() => {this.filterMode = this.filterMode === 'id' ? 'name' : 'id'}}
-                    />
+                        onPress={() => this.setState({filterMode: filterMode === 'id' ? 'name' : 'id'}, () => this.filterHeroesDelayed())}
+                    >
+                        {filterMode === 'id' ? (
+                            <SortByNumber/>
+                        ) : (
+                            <SortByAlphabet/>
+                        )}
+                    </TouchableOpacity>
                 </View>
 
                 <FlatList
@@ -58,8 +77,13 @@ class Heroes extends React.Component {
                         <HeroCard
                             hero={item}
                             size={this.cardSize}
-                            onPress={() => this.props.navigation.navigate("Heroes")}
+                            onPress={() => this.props.navigation.navigate('HeroRecommendations', {hero: item})}
                         />
+                    )}
+                    ListEmptyComponent={() => (
+                        <View style={styles.no_result_container}>
+                            <Text style={styles.no_result_text}>{t('heroes.no-result')}</Text>
+                        </View>
                     )}
                 />
             </SafeAreaView>
@@ -77,17 +101,32 @@ const styles = StyleSheet.create({
     search_bar: {
         padding: 10,
         marginTop: 2,
-        flexDirection: "row"
+        flexDirection: 'row'
     },
     filter_button: {
         aspectRatio: 1,
         height: 50,
         borderRadius: 25,
-        backgroundColor: Colors.ORANGE_SHINY
+        backgroundColor: Colors.GREY_DARK,
+        justifyContent: 'center',
+        alignItems: 'center',
+        elevation: 3,
+        shadowOffset: {width: 0, height: 1},
+        shadowOpacity: 0.22,
+        shadowRadius: 2.22
     },
     heroes: {
         marginLeft: 'auto',
         marginRight: 'auto',
         paddingVertical: 2
+    },
+    no_result_container: {
+        height: 200,
+        padding: 5,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    no_result_text: {
+        textAlign: 'center'
     }
 });

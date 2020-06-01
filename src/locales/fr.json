@@ -5,7 +5,15 @@
     "simulators": "Simulateurs"
   },
   "heroes": {
-    "title": "Héros"
+    "title": "Héros",
+    "hero-search": "Chercher un héros",
+    "no-result": "Aucun résultat",
+    "recommendations": {
+      "gw-attack": "Mode GdG - Attaque",
+      "gw-defence": "Mode GdG - Défense",
+      "dungeon": "Mode Donjon",
+      "enchantments": "Enchantements"
+    }
   },
   "dungeons": {
     "title": "Donjons"

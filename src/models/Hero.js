@@ -20,6 +20,7 @@ export default class Hero {
         this.talentDungeon = hero.talent_donjon;
         this.crestDungeon = hero.ecu_donjon;
 
+        this.pet = hero.pet;
         this.enchantments = [hero.enchantement1, hero.enchantement2, hero.enchantement3];
     }
 
@@ -32,7 +33,7 @@ export default class Hero {
         }
     }
 
-    getPicture(): Images {
-        return Images[this.nameEN.toLowerCase().trim().replace(/ |-/g, '_')];
+    getPicture(appearance: ?number): Images {
+        return Images[`${this.nameEN}${appearance || ''}`.toLowerCase().trim().replace(/[ -]/g, '_')];
     }
 }

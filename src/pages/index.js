@@ -20,3 +20,4 @@ export Protectors from './simulators/Protectors';
 export RollSimulator from './simulators/RollSimulator';
 export SkinLevel from './simulators/SkinLevel';
 export TalentLevel from './simulators/TalentLevel';
+export HeroRecommendations from './advices/HeroRecommendations';
