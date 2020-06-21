@@ -30,6 +30,10 @@ export default class Sets {
         return this.instance;
     }
 
+    getHero(heroNameFR: string): Hero {
+        return this.heroes.find(hero => hero.nameFR === heroNameFR);
+    }
+
     addHero(hero: Object) {
         this.heroes.push(new Hero(hero));
     }

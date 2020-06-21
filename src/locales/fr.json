@@ -19,7 +19,8 @@
     "title": "Donjons"
   },
   "archdemons": {
-    "title": "Archidémons"
+    "title": "Archidémons",
+    "suggestion": "Suggestion"
   },
   "talents": {
     "title": "Talents"

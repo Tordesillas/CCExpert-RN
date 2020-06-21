@@ -24,9 +24,17 @@ export default class Archdemon {
     getDescription(): string {
         switch (this.localizationService.getLanguage()) {
             case 'fr':
-                return this.descriptionFR;
+                return this.descriptionFR.replace(' + ', '\n');
             default:
-                return this.descriptionEN;
+                return this.descriptionEN.replace(' + ', '\n');
         }
+    }
+
+    getHeroesSuggestion(): Array<{hero: string, talent: string, crest: string}> {
+        let suggestion = [];
+        for (let i = 0; i <= 5; i++) {
+            suggestion.push({hero: this.heroNames[i], talent: this.talents[i], crest: this.crests[i]});
+        }
+        return suggestion;
     }
 }

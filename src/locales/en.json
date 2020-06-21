@@ -19,7 +19,8 @@
     "title": "Dungeons"
   },
   "archdemons": {
-    "title": "Archdemons"
+    "title": "Archdemons",
+    "suggestion": "Suggestion"
   },
   "talents": {
     "title": "Talents"
