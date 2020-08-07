@@ -36,7 +36,8 @@ export function containerWithTriangle() {
 export const defaultNavigationOptions = {
     headerTintColor: Colors.WHITE,
     headerStyle: {
-        backgroundColor: Colors.BLACK
+        backgroundColor: Colors.BLACK,
+        shadowColor: Platform.OS === 'android' ? undefined : 'transparent'
     },
     headerTitleStyle: {
         color: Colors.WHITE,

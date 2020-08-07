@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import {Platform, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import {Colors} from '../../utils';
 
 type Props = {
@@ -21,7 +21,7 @@ type State = {
     selectedIndex: number
 }
 
-export default class WheelPicker extends React.Component<Props, State> {
+export default class VerticalWheelPicker extends React.Component<Props, State> {
     static defaultProps = {
         initialSelectedIndex: 0,
         height: 180,
@@ -45,9 +45,7 @@ export default class WheelPicker extends React.Component<Props, State> {
 
     onMomentumScrollEnd(event: any) {
         this.momentumStarted = false;
-        if (!this.isScrollTo) {
-            this.scrollFix(event);
-        }
+        this.scrollFix(event);
     }
 
     scrollFix(event: any) {
@@ -65,9 +63,6 @@ export default class WheelPicker extends React.Component<Props, State> {
             verticalElem = (dataSource.length - 1) * h;
         }
         if (verticalElem !== verticalY) {
-            if (Platform.OS === 'ios') {
-                this.isScrollTo = true;
-            }
             this.sview.scrollTo({y: verticalElem});
         }
 

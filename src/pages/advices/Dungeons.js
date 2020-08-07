@@ -4,9 +4,10 @@ import React from 'react';
 import {Dimensions, Image, SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
 import {RectButton} from 'react-native-gesture-handler';
 import {withTranslation} from 'react-i18next';
-import {WheelPicker} from '../../components';
+import {HorizontalWheelPicker, VerticalWheelPicker} from '../../components';
 import Sets from '../../models/Sets';
 import {Colors, Images} from '../../utils';
+import _ from "lodash";
 
 class Dungeons extends React.Component {
     constructor(props) {
@@ -42,6 +43,12 @@ class Dungeons extends React.Component {
 
         return (
             <SafeAreaView style={styles.main_container}>
+                <HorizontalWheelPicker
+                    items={_.map(['1', '2', '3', '4', '5', '6', '7', '8'], (time, idx) =>
+                        ({label: time, value: idx})
+                    )}
+                    onSelect={(label) => console.log(label)}
+                />
                 <ScrollView contentContainerStyle={styles.main_wrapper}>
                     <View style={styles.wrapper}>
                         <View style={styles.wheel_container}>
@@ -52,7 +59,7 @@ class Dungeons extends React.Component {
                                 fadeDuration={0}
                             />
                             <View style={{flex: 1}}>
-                                <WheelPicker
+                                <VerticalWheelPicker
                                     dataSource={['1', '2', '3', '4', '5', '6', '7', '8']}
                                     onValueChange={(value) => {
                                         this.door = value;
@@ -71,7 +78,7 @@ class Dungeons extends React.Component {
                                 resizeMode="contain"
                                 fadeDuration={0}
                             />
-                            <WheelPicker
+                            <VerticalWheelPicker
                                 dataSource={['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']}
                                 onValueChange={(value) => {
                                     this.base = value;
