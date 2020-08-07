@@ -21,3 +21,7 @@ export RollSimulator from './simulators/RollSimulator';
 export SkinLevel from './simulators/SkinLevel';
 export TalentLevel from './simulators/TalentLevel';
 export HeroRecommendations from './advices/HeroRecommendations';
+export DungeonDetails from './advices/DungeonDetails';
+export EnchantmentDetails from './encyclopedia/EnchantmentDetails';
+export PetDetails from './encyclopedia/PetDetails';
+export TalentDetails from './encyclopedia/TalentDetails';

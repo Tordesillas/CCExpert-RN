@@ -1,7 +1,7 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import i18next from 'i18next';
-import {Enchantments, Encyclopedia, Pets, Talents} from '../pages';
+import {EnchantmentDetails, Enchantments, Encyclopedia, PetDetails, Pets, TalentDetails, Talents} from '../pages';
 import {containerWithTriangle, defaultNavigationOptions} from './navigationHelper';
 
 const EncyclopediaStack = createStackNavigator();
@@ -42,6 +42,33 @@ export default function EncyclopediaStackScreen() {
                 options={{
                     ...defaultNavigationOptions,
                     title: i18next.t('pets.title'),
+                    headerRight: () => containerWithTriangle()
+                }}
+            />
+            <EncyclopediaStack.Screen
+                name="Enchantment"
+                component={EnchantmentDetails}
+                options={{
+                    ...defaultNavigationOptions,
+                    title: i18next.t('enchantments.title-details'),
+                    headerRight: () => containerWithTriangle()
+                }}
+            />
+            <EncyclopediaStack.Screen
+                name="Pet"
+                component={PetDetails}
+                options={{
+                    ...defaultNavigationOptions,
+                    title: i18next.t('pets.title-details'),
+                    headerRight: () => containerWithTriangle()
+                }}
+            />
+            <EncyclopediaStack.Screen
+                name="Talent"
+                component={TalentDetails}
+                options={{
+                    ...defaultNavigationOptions,
+                    title: i18next.t('talents.title-details'),
                     headerRight: () => containerWithTriangle()
                 }}
             />

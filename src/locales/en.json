@@ -19,20 +19,24 @@
     "title": "Dungeons",
     "f2p-video": "F2P video",
     "p2w-video": "P2W video",
-    "no-video-available": "No video is available for this dungeon"
+    "no-video-available": "No video is available for this dungeon",
+    "title-details": "Dungeon"
   },
   "archdemons": {
     "title": "Archdemons",
     "suggestion": "Suggestion"
   },
   "talents": {
-    "title": "Talents"
+    "title": "Talents",
+    "title-details": "Talent"
   },
   "enchantments": {
-    "title": "Enchantments"
+    "title": "Enchantments",
+    "title-details": "Enchantment"
   },
   "pets": {
-    "title": "Pets"
+    "title": "Pets",
+    "title-details": "Pet"
   },
   "guild-war": {
     "title": "Guild war"

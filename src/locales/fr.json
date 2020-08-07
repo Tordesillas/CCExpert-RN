@@ -19,20 +19,24 @@
     "title": "Donjons",
     "f2p-video": "Vidéo F2P",
     "p2w-video": "Vidéo P2W",
-    "no-video-available": "Aucune vidéo n'est disponible pour ce donjon"
+    "no-video-available": "Aucune vidéo n'est disponible pour ce donjon",
+    "title-details": "Donjon"
   },
   "archdemons": {
     "title": "Archidémons",
     "suggestion": "Suggestion"
   },
   "talents": {
-    "title": "Talents"
+    "title": "Talents",
+    "title-details": "Talent"
   },
   "enchantments": {
-    "title": "Enchantements"
+    "title": "Enchantements",
+    "title-details": "Enchantement"
   },
   "pets": {
-    "title": "Familiers"
+    "title": "Familiers",
+    "title-details": "Familier"
   },
   "guild-war": {
     "title": "Guerre de guilde"

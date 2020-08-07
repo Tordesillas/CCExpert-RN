@@ -1,32 +1,34 @@
 // @flow
 
 import React from 'react';
-import {Image, StyleSheet, Text} from 'react-native';
+import {Image, StyleSheet, Text, View} from 'react-native';
 import {RectButton} from 'react-native-gesture-handler';
-import Hero from '../../models/Hero';
+import Pet from '../../models/Pet';
 import {Colors} from '../../utils';
 
 type Props = {
-    hero: Hero,
+    pet: Pet,
     size: number,
     onPress: () => void,
     style?: StyleSheet.style
 }
 
-export default class HeroCard extends React.Component<Props> {
+export default class PetCard extends React.Component<Props> {
     render() {
-        const {hero, size, onPress, style} = this.props;
+        const {pet, size, onPress, style} = this.props;
 
         return (
             <RectButton style={[styles.main_container, {width: size}, style]} onPress={onPress}>
-                <Image
-                    source={hero.getPicture()}
-                    style={styles.image}
-                    resizeMode="contain"
-                    fadeDuration={0}
-                />
+                <View style={styles.image_container}>
+                    <Image
+                        source={pet.getPicture()}
+                        style={styles.image}
+                        resizeMode="contain"
+                        fadeDuration={0}
+                    />
+                </View>
                 <Text style={styles.title}>
-                    {hero.getName()}
+                    {pet.getName()}
                 </Text>
             </RectButton>
         );
@@ -50,6 +52,10 @@ const styles = StyleSheet.create({
 
         color: Colors.WHITE,
         fontSize: 14
+    },
+    image_container: {
+        flex: 1,
+        padding: 5
     },
     image: {
         aspectRatio: 1,

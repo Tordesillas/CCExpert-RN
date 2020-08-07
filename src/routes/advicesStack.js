@@ -1,7 +1,7 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import i18next from 'i18next';
-import {Advices, Archdemons, Dungeons, Heroes, HeroRecommendations} from '../pages';
+import {Advices, Archdemons, DungeonDetails, Dungeons, Heroes, HeroRecommendations} from '../pages';
 import {containerWithTriangle, defaultNavigationOptions} from './navigationHelper';
 
 const AdvicesStack = createStackNavigator();
@@ -53,6 +53,15 @@ export default function AdvicesStackScreen() {
                     title: route.params.hero.getName(),
                     headerRight: () => containerWithTriangle()
                 })}
+            />
+            <AdvicesStack.Screen
+                name="Dungeon"
+                component={DungeonDetails}
+                options={{
+                    ...defaultNavigationOptions,
+                    title: i18next.t('dungeons.title-details'),
+                    headerRight: () => containerWithTriangle()
+                }}
             />
         </AdvicesStack.Navigator>
     );

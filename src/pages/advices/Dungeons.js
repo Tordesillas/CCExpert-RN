@@ -37,7 +37,7 @@ class Dungeons extends React.Component {
     }
 
     render() {
-        const {t} = this.props;
+        const {navigation, t} = this.props;
         const {f2pVideo, p2wVideo, dungeonImage} = this.state;
 
         return (
@@ -86,15 +86,15 @@ class Dungeons extends React.Component {
                     <View style={styles.buttons_container}>
                         <View style={styles.button_container}>
                             {f2pVideo && (
-                                <RectButton style={styles.button}>
-                                    <Text style={styles.button_text}>Vidéo F2P</Text>
+                                <RectButton style={styles.button} onPress={() => navigation.navigate('Dungeon', {dungeon: f2pVideo})}>
+                                    <Text style={styles.button_text}>{t('dungeons.f2p-video')}</Text>
                                 </RectButton>
                             )}
                         </View>
                         <View style={styles.button_container}>
                             {p2wVideo && (
-                                <RectButton style={styles.button}>
-                                    <Text style={styles.button_text}>Vidéo P2W</Text>
+                                <RectButton style={styles.button} onPress={() => navigation.navigate('Dungeon', {dungeon: p2wVideo})}>
+                                    <Text style={styles.button_text}>{t('dungeons.p2w-video')}</Text>
                                 </RectButton>
                             )}
                         </View>
