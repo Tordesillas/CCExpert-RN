@@ -16,7 +16,10 @@
     }
   },
   "dungeons": {
-    "title": "Donjons"
+    "title": "Donjons",
+    "f2p-video": "Vidéo F2P",
+    "p2w-video": "Vidéo P2W",
+    "no-video-available": "Aucune vidéo n'est disponible pour ce donjon"
   },
   "archdemons": {
     "title": "Archidémons",

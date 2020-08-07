@@ -16,7 +16,10 @@
     }
   },
   "dungeons": {
-    "title": "Dungeons"
+    "title": "Dungeons",
+    "f2p-video": "F2P video",
+    "p2w-video": "P2W video",
+    "no-video-available": "No video is available for this dungeon"
   },
   "archdemons": {
     "title": "Archdemons",
