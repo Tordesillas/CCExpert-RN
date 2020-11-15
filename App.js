@@ -24,7 +24,7 @@ export default class App extends React.Component {
         await this.localizationService.setLanguage(language);
 
         this.setState({loading: false});
-        setTimeout(() => RNBootSplash.hide(), 10);
+        setTimeout(() => RNBootSplash.hide({fade: true}), 10);
     }
 
     render() {
