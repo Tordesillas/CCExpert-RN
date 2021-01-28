@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
         borderRadius: 2,
         elevation: 2,
         shadowOpacity: 0.2,
+        shadowRadius: 1.41,
         shadowOffset: {width: 0, height: 1}
     },
     title: {

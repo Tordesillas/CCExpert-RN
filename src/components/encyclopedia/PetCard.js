@@ -19,14 +19,12 @@ export default class PetCard extends React.Component<Props> {
         return (
             <View style={styles.wrapper}>
                 <RectButton style={[styles.main_container, style]} onPress={onPress}>
-                    <View style={styles.image_container}>
-                        <Image
-                            source={pet.getPicture()}
-                            style={styles.image}
-                            resizeMode="contain"
-                            fadeDuration={0}
-                        />
-                    </View>
+                    <Image
+                        source={pet.getPicture()}
+                        style={styles.image}
+                        resizeMode="contain"
+                        fadeDuration={0}
+                    />
                     <Text style={styles.title}>
                         {pet.getName()}
                     </Text>
@@ -53,20 +51,16 @@ const styles = StyleSheet.create({
     },
     title: {
         textAlign: 'center',
-        marginTop: -6,
         paddingHorizontal: 2,
         paddingBottom: 4,
 
         color: Colors.WHITE,
         fontSize: 14
     },
-    image_container: {
-        flex: 1,
-        padding: 5
-    },
     image: {
+        marginVertical: 4,
         aspectRatio: 1,
-        width: '100%',
+        width: '90%',
         height: undefined
     }
 });

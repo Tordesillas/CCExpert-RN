@@ -36,6 +36,15 @@ export default class Pet {
         this.modes = pet.modes;
     }
 
+    getDescription(level: number): string {
+        switch (this.localizationService.getLanguage()) {
+            case 'fr':
+                return this.descriptionFR[level];
+            default:
+                return this.descriptionEN[level];
+        }
+    }
+
     getName(): string {
         switch (this.localizationService.getLanguage()) {
             case 'fr':
@@ -47,5 +56,9 @@ export default class Pet {
 
     getPicture(): Images {
         return Images[this.nameEN.toLowerCase().trim().replace(/[ -]/g, '_').replace(/[()]/g, '')];
+    }
+
+    isRecommendedForThisMode(mode: number): boolean {
+        return this.modes[mode] === "1";
     }
 }

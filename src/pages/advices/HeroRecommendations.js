@@ -9,7 +9,11 @@ import Sets from '../../models/Sets';
 import Hero from '../../models/Hero';
 import {Colors} from '../../utils';
 
-class HeroRecommendations extends React.Component {
+type State = {
+    appearance: number
+}
+
+class HeroRecommendations extends React.Component<null, State> {
     constructor(props) {
         super(props);
 
@@ -27,9 +31,9 @@ class HeroRecommendations extends React.Component {
     }
 
     render() {
-        const {t} = this.props;
+        const {route, t} = this.props;
         const {appearance} = this.state;
-        const {hero} = this.props.route.params;
+        const {hero} = route.params;
 
         return (
             <SafeAreaView style={styles.main_container}>

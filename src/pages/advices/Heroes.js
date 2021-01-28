@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import {Dimensions, FlatList, SafeAreaView, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {FlatList, SafeAreaView, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import _ from 'lodash';
 import {withTranslation} from 'react-i18next';
 import {HeroCard, TextField} from '../../components';
@@ -14,7 +14,6 @@ class Heroes extends React.Component {
         super(props);
 
         this.heroes = Sets.get().heroes;
-        this.cardSize = Dimensions.get('window').width / 3 - 6;
 
         this.state = {
             heroSearch: "",
@@ -76,7 +75,6 @@ class Heroes extends React.Component {
                     renderItem={({item}) => (
                         <HeroCard
                             hero={item}
-                            size={this.cardSize}
                             onPress={() => this.props.navigation.navigate('HeroRecommendations', {hero: item})}
                         />
                     )}

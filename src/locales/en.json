@@ -28,7 +28,9 @@
   },
   "talents": {
     "title": "Talents",
-    "title-details": "Talent"
+    "title-details": "Talent",
+    "level": "Level",
+    "description": "Description"
   },
   "enchantments": {
     "title": "Enchantments",
@@ -36,7 +38,8 @@
   },
   "pets": {
     "title": "Pets",
-    "title-details": "Pet"
+    "title-details": "Pet",
+    "recommended-modes": "Recommended modes"
   },
   "guild-war": {
     "title": "Guild war"

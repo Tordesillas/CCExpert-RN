@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import {Dimensions, FlatList, SafeAreaView, StyleSheet} from 'react-native';
+import {FlatList, SafeAreaView, StyleSheet} from 'react-native';
 import {withTranslation} from 'react-i18next';
 import {TalentCard} from '../../components';
 import Sets from '../../models/Sets';
@@ -14,7 +14,6 @@ class Talents extends React.Component {
         this.talents = Sets.get().talents
             .filter(talent => !talent.isEnchantment)
             .sort((t1, t2) => t1.getName().localeCompare(t2.getName()));
-        this.cardSize = Dimensions.get('window').width / 4 - 6;
     }
 
     render() {
@@ -28,8 +27,7 @@ class Talents extends React.Component {
                     renderItem={({item}) => (
                         <TalentCard
                             talent={item}
-                            size={this.cardSize}
-                            onPress={() => this.props.navigation.navigate('Talent', {talent: item})}
+                            onPress={() => this.props.navigation.navigate('Talent', {talentName: item.nameFR})}
                         />
                     )}
                 />

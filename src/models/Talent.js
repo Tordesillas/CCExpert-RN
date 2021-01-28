@@ -39,11 +39,28 @@ export default class Talent {
         }
     }
 
-    getPicture() {
+    getDescription(level: number): string {
+        switch (this.localizationService.getLanguage()) {
+            case 'fr':
+                return this.descriptionFR[level];
+            default:
+                return this.descriptionEN[level];
+        }
+    }
+
+    getPicture(): Images {
         return Images[this.nameEN.toLowerCase().trim().replace(/[ -]/g, '_').replace(/[']/g, '')];
     }
 
-    getCrestPicture() {
+    getCrestPicture(): Images {
         return Images[`${this.nameEN.toLowerCase().trim().replace(/[ -]/g, '_').replace(/[']/g, '')}_crest`];
+    }
+
+    getMinimumLevel(): number {
+        return this.descriptionEN.findIndex(des => !!des);
+    }
+
+    getMaximumLevel(): number {
+        return 10 - this.descriptionEN.reverse().findIndex(des => !!des);
     }
 }

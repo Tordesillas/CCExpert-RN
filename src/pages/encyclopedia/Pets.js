@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import {Dimensions, FlatList, SafeAreaView, StyleSheet} from 'react-native';
+import {FlatList, SafeAreaView, StyleSheet} from 'react-native';
 import {withTranslation} from 'react-i18next';
 import {PetCard} from '../../components';
 import Sets from '../../models/Sets';
@@ -13,7 +13,6 @@ class Pets extends React.Component {
 
         this.pets = Sets.get().pets
             .sort((p1, p2) => p1.getName().localeCompare(p2.getName()));
-        this.cardSize = Dimensions.get('window').width / 4 - 6;
     }
 
     render() {
@@ -27,8 +26,7 @@ class Pets extends React.Component {
                     renderItem={({item}) => (
                         <PetCard
                             pet={item}
-                            size={this.cardSize}
-                            onPress={() => this.props.navigation.navigate('Pet', {Pet: item})}
+                            onPress={() => this.props.navigation.navigate('Pet', {petName: item.nameFR})}
                         />
                     )}
                 />

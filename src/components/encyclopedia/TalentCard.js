@@ -19,14 +19,12 @@ export default class TalentCard extends React.Component<Props> {
         return (
             <View style={styles.wrapper}>
                 <RectButton style={[styles.main_container, style]} onPress={onPress}>
-                    <View style={styles.image_container}>
-                        <Image
-                            source={talent.getPicture()}
-                            style={styles.image}
-                            resizeMode="contain"
-                            fadeDuration={0}
-                        />
-                    </View>
+                    <Image
+                        source={talent.getPicture()}
+                        style={styles.image}
+                        resizeMode="contain"
+                        fadeDuration={0}
+                    />
                     <Text style={styles.title}>
                         {talent.getName()}
                     </Text>
@@ -60,14 +58,10 @@ const styles = StyleSheet.create({
         color: Colors.WHITE,
         fontSize: 14
     },
-    image_container: {
-        flex: 1,
-        padding: 10,
-        paddingBottom: 5
-    },
     image: {
+        marginVertical: 8,
         aspectRatio: 1,
-        width: '100%',
+        width: '80%',
         height: undefined
     }
 });
