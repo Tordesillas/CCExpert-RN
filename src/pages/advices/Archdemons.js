@@ -43,7 +43,8 @@ class Archdemons extends React.Component {
                         indicatorStyle: {
                             backgroundColor: Colors.ORANGE
                         },
-                        scrollEnabled: true
+                        scrollEnabled: true,
+                        backBehavior: 'none'
                     }}
                 >
                     {this.tabScreens}

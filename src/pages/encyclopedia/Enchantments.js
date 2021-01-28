@@ -46,8 +46,6 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.GREY
     },
     enchantments: {
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        paddingVertical: 4
+        padding: 2
     }
 });

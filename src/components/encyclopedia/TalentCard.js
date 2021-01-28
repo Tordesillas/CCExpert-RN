@@ -8,40 +8,47 @@ import {Colors} from '../../utils';
 
 type Props = {
     talent: Talent,
-    size: number,
     onPress: () => void,
     style?: StyleSheet.style
 }
 
 export default class TalentCard extends React.Component<Props> {
     render() {
-        const {talent, size, onPress, style} = this.props;
+        const {talent, onPress, style} = this.props;
 
         return (
-            <RectButton style={[styles.main_container, {width: size}, style]} onPress={onPress}>
-                <View style={styles.image_container}>
-                    <Image
-                        source={talent.getPicture()}
-                        style={styles.image}
-                        resizeMode="contain"
-                        fadeDuration={0}
-                    />
-                </View>
-                <Text style={styles.title}>
-                    {talent.getName()}
-                </Text>
-            </RectButton>
+            <View style={styles.wrapper}>
+                <RectButton style={[styles.main_container, style]} onPress={onPress}>
+                    <View style={styles.image_container}>
+                        <Image
+                            source={talent.getPicture()}
+                            style={styles.image}
+                            resizeMode="contain"
+                            fadeDuration={0}
+                        />
+                    </View>
+                    <Text style={styles.title}>
+                        {talent.getName()}
+                    </Text>
+                </RectButton>
+            </View>
         );
     }
 }
 
 const styles = StyleSheet.create({
+    wrapper: {
+        flex: 1,
+        maxWidth: '25%',
+        padding: 2
+    },
     main_container: {
-        margin: 2,
+        flex: 1,
         alignItems: 'center',
         backgroundColor: Colors.BLACK_LIGHT,
         elevation: 2,
         shadowOpacity: 0.2,
+        shadowRadius: 1.41,
         shadowOffset: {width: 0, height: 1}
     },
     title: {

@@ -22,7 +22,7 @@ class Heroes extends React.Component {
             filterMode: 'id'
         };
 
-        this.filterHeroesDelayed = _.debounce(this.filterHeroes, 200);
+        this.filterHeroesDelayed = _.debounce(this.filterHeroes, 300);
     }
 
     filterHeroes() {
@@ -47,9 +47,9 @@ class Heroes extends React.Component {
 
         return (
             <SafeAreaView style={styles.main_container}>
-                <View style={styles.search_bar}>
+                <View style={styles.search_bar_container}>
                     <TextField
-                        style={{flex: 1}}
+                        style={styles.search_bar}
                         value={heroSearch}
                         placeholder={t('heroes.hero-search')}
                         keyboardType='default'
@@ -98,10 +98,17 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: Colors.GREY
     },
-    search_bar: {
+    search_bar_container: {
         padding: 10,
         marginTop: 2,
         flexDirection: 'row'
+    },
+    search_bar: {
+        flex: 1,
+        marginRight: 10,
+        paddingLeft: 10,
+        backgroundColor: Colors.GREY_LIGHT,
+        borderRadius: 5
     },
     filter_button: {
         aspectRatio: 1,
@@ -116,9 +123,7 @@ const styles = StyleSheet.create({
         shadowRadius: 2.22
     },
     heroes: {
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        paddingVertical: 2
+        paddingHorizontal: 2
     },
     no_result_container: {
         height: 200,

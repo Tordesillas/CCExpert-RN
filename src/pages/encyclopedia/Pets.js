@@ -45,8 +45,6 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.GREY
     },
     pets: {
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        paddingVertical: 4
+        padding: 2
     }
 });

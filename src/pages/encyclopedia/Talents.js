@@ -46,8 +46,6 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.GREY
     },
     talents: {
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        paddingVertical: 4
+        padding: 2
     }
 });
