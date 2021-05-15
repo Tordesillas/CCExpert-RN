@@ -7,7 +7,6 @@ export Enchantments from './encyclopedia/Enchantments';
 export Pets from './encyclopedia/Pets';
 export Talents from './encyclopedia/Talents';
 export Simulators from './simulators/Simulators';
-export Accuracy from './simulators/Accuracy';
 export AttackSpeed from './simulators/AttackSpeed';
 export BreakthroughLevels from './simulators/BreakthroughLevels';
 export Destiny from './simulators/Destiny';

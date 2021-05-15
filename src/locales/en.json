@@ -42,7 +42,13 @@
     "recommended-modes": "Recommended modes"
   },
   "guild-war": {
-    "title": "Guild war"
+    "title": "Guild war",
+    "power-field": "Power",
+    "power-placeholder": "Example: 2450000",
+    "score-field": "Score",
+    "score-placeholder": "Example: 32000",
+    "incorrect-data": "The data entered is invalid.",
+    "simulation-result": "The player attacks on average opponents with {{power}} of power."
   },
   "talent-level": {
     "title": "Talent level"

@@ -1,9 +1,13 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as RNLocalize from 'react-native-localize';
 import i18next from 'i18next';
+import numbro from "numbro";
+import numbroLanguages from "numbro/dist/languages.min.js";
 import {initReactI18next} from 'react-i18next';
 import translationEN from '../locales/en.json';
 import translationFR from '../locales/fr.json';
+
+numbro.registerLanguage(numbroLanguages['fr-FR']);
 
 const LANGUAGE = 'language';
 const DEFAULT_LANGUAGE = 'en';
@@ -21,6 +25,12 @@ export default class LocalizationService {
     };
 
     async setLanguage(language: string) {
+        if (language === "fr" && numbro.language() !== "fr-FR") {
+            numbro.setLanguage('fr-FR');
+        } else if (language !== "fr" && numbro.language() !== "en-US") {
+            numbro.setLanguage('en-US');
+        }
+
         if (i18next.isInitialized && language !== this.language) {
             await i18next.changeLanguage(language);
         }
@@ -56,5 +66,9 @@ export default class LocalizationService {
 
     getLanguage() {
         return this.language || DEFAULT_LANGUAGE;
+    }
+
+    formatNumber(number: number) : string {
+        return numbro(number).format({thousandSeparated: true});
     }
 }

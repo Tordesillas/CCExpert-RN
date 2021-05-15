@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
         shadowOffset: {width: 0, height: 1}
     },
     pet_image: {
-        flex: 1,
+        maxWidth: 150,
         aspectRatio: 1,
         marginVertical: 5,
     },

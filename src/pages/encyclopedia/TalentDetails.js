@@ -82,6 +82,7 @@ const styles = StyleSheet.create({
         shadowOffset: {width: 0, height: 1}
     },
     image: {
+        maxWidth: 100,
         aspectRatio: 1,
         marginVertical: 10,
         marginLeft: 20

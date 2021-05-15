@@ -16,35 +16,31 @@ class Simulators extends React.Component {
             navigationPage: "GuildWar"
         }, {
             title: props.t('talent-level.title'),
-            icon: Images.shards,
+            icon: Images.talent_chest,
             navigationPage: "TalentLevel"
         }, {
             title: props.t('inscription.title'),
-            icon: Images.crystal,
+            icon: Images.inscription,
             navigationPage: "Inscription"
         }, {
             title: props.t('equipment.title'),
-            icon: Images.aetherock,
+            icon: Images.equipment,
             navigationPage: "Equipment"
         }, {
             title: props.t('dodge.title'),
             icon: Images.lightning_rock,
             navigationPage: "Dodge"
         }, {
-            title: props.t('accuracy.title'),
-            icon: Images.eye_of_garuda,
-            navigationPage: "Accuracy"
-        }, {
             title: props.t('attack-speed.title'),
             icon: Images.blitz_scroll,
             navigationPage: "AttackSpeed"
         }, {
             title: props.t('destiny.title'),
-            icon: Images.karmic_rock4,
+            icon: Images.fate,
             navigationPage: "Destiny"
         }, {
             title: props.t('protectors.title'),
-            icon: Images.saint,
+            icon: Images.protectors,
             navigationPage: "Protectors"
         }, {
             title: props.t('skin-level.title'),

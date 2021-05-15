@@ -16,7 +16,7 @@ class Advices extends React.Component {
             navigationPage: "Heroes"
         }, {
             title: props.t('dungeons.title'),
-            icon: Images.dungeon_logo,
+            icon: Images.dungeon_door,
             navigationPage: "Dungeons"
         }, {
             title: props.t('archdemons.title'),

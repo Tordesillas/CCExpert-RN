@@ -52,6 +52,7 @@ class Heroes extends React.Component {
                         value={heroSearch}
                         placeholder={t('heroes.hero-search')}
                         keyboardType='default'
+                        autoCapitalize='sentences'
                         returnKeyType='done'
                         onChangeText={(text) => this.setState({heroSearch: text}, () => this.filterHeroesDelayed())}
                     />
@@ -106,7 +107,8 @@ const styles = StyleSheet.create({
         marginRight: 10,
         paddingLeft: 10,
         backgroundColor: Colors.GREY_LIGHT,
-        borderRadius: 5
+        borderRadius: 5,
+        color: Colors.WHITE
     },
     filter_button: {
         aspectRatio: 1,

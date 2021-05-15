@@ -42,7 +42,13 @@
     "recommended-modes": "Modes conseillés"
   },
   "guild-war": {
-    "title": "Guerre de guilde"
+    "title": "Guerre de guilde",
+    "power-field": "Puissance",
+    "power-placeholder": "Exemple : 2450000",
+    "score-field": "Score",
+    "score-placeholder": "Exemple : 32000",
+    "incorrect-data": "Les données saisies sont invalides",
+    "simulation-result": "Le joueur attaque des adversaires ayant une puissance de {{power}}."
   },
   "talent-level": {
     "title": "Niveau du talent"

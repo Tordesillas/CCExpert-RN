@@ -67,15 +67,6 @@ export default function SimulatorsStackScreen() {
                 }}
             />
             <SimulatorsStack.Screen
-                name="Accuracy"
-                component={Accuracy}
-                options={{
-                    ...defaultNavigationOptions,
-                    title: i18next.t('accuracy.title'),
-                    headerRight: () => containerWithTriangle()
-                }}
-            />
-            <SimulatorsStack.Screen
                 name="AttackSpeed"
                 component={AttackSpeed}
                 options={{
