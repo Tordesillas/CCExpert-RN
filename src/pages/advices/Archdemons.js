@@ -16,16 +16,13 @@ class Archdemons extends React.Component {
 
         const archdemons = Sets.get().archdemons;
 
-        this.tabScreens = [];
-        archdemons.forEach((archdemon, index) =>
-            this.tabScreens.push(
-                <Tab.Screen
-                    key={index}
-                    name={`${props.t('archdemons.suggestion')} ${index+1}`}
-                    component={ArchdemonFragment}
-                    initialParams={{archdemon}}
-                />
-            )
+        this.tabScreens = archdemons.map((archdemon, index) =>
+            <Tab.Screen
+                key={index}
+                name={`${props.t('archdemons.suggestion')} ${index+1}`}
+                component={ArchdemonFragment}
+                initialParams={{archdemon}}
+            />
         );
     }
 
