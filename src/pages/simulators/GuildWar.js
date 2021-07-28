@@ -42,7 +42,7 @@ class GuildWar extends React.Component {
                     </View>
                 </View>
                 <View style={styles.result_container}>
-                    <Text>{GuildWarProcessor.printStats(t, power, score)}</Text>
+                    <Text style={styles.result_text}>{GuildWarProcessor.printStats(t, power, score)}</Text>
                 </View>
             </SafeAreaView>
         );
@@ -79,6 +79,10 @@ const styles = StyleSheet.create({
         color: Colors.WHITE
     },
     result_container: {
-
+        marginHorizontal: 4,
+        marginVertical: 10
+    },
+    result_text: {
+        color: Colors.ORANGE
     }
 });

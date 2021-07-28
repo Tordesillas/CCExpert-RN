@@ -4,6 +4,15 @@
     "encyclopedia": "Encyclopédie",
     "simulators": "Simulateurs"
   },
+  "common": {
+    "close": "Fermer",
+    "hero-categories": {
+      "epic": "Épique",
+      "legendary": "Légendaire",
+      "elite": "Élite",
+      "ordinary": "Ordinaire"
+    }
+  },
   "heroes": {
     "title": "Héros",
     "hero-search": "Chercher un héros",
@@ -51,7 +60,8 @@
     "simulation-result": "Le joueur attaque des adversaires ayant une puissance de {{power}}."
   },
   "talent-level": {
-    "title": "Niveau du talent"
+    "title": "Niveau du talent",
+    "hero-category": "Catégorie du héros"
   },
   "inscription": {
     "title": "Inscription"

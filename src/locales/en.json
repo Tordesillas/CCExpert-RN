@@ -4,6 +4,15 @@
     "encyclopedia": "Encyclopedia",
     "simulators": "Simulators"
   },
+  "common": {
+    "close": "Close",
+    "hero-categories": {
+      "epic": "Epic",
+      "legendary": "Legendary",
+      "elite": "Elite",
+      "ordinary": "Ordinary"
+    }
+  },
   "heroes": {
     "title": "Heroes",
     "hero-search": "Look for a hero",
@@ -51,7 +60,8 @@
     "simulation-result": "The player attacks on average opponents with {{power}} of power."
   },
   "talent-level": {
-    "title": "Talent level"
+    "title": "Talent level",
+    "hero-category": "Hero's category"
   },
   "inscription": {
     "title": "Inscription"
