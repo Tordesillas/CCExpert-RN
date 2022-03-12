@@ -43,7 +43,8 @@ export default class LocalizationService {
                     keySeparator: '.',
                     interpolation: {
                         escapeValue: false
-                    }
+                    },
+                    compatibilityJSON: 'v3'
                 });
         }
 
