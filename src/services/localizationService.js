@@ -1,8 +1,8 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as RNLocalize from 'react-native-localize';
 import i18next from 'i18next';
-import numbro from "numbro";
-import numbroLanguages from "numbro/dist/languages.min.js";
+import numbro from 'numbro';
+import numbroLanguages from 'numbro/dist/languages.min.js';
 import {initReactI18next} from 'react-i18next';
 import translationEN from '../locales/en.json';
 import translationFR from '../locales/fr.json';

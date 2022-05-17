@@ -10,11 +10,11 @@ import {Colors} from '../utils';
 
 function renderTabBarIcon(routeName, focused, color, size) {
     switch (routeName) {
-        case "Advices":
+        case "AdvicesStack":
             return <HeadBulb width={size} height={size} color={color}/>;
-        case "Encyclopedia":
+        case "EncyclopediaStack":
             return <Book width={size} height={size} color={color}/>;
-        case "Simulators":
+        case "SimulatorsStack":
             return <Simulation width={size} height={size} color={color}/>;
     }
 }
@@ -26,29 +26,28 @@ export default function AppNavigator() {
         <NavigationContainer>
             <Tab.Navigator
                 screenOptions={({route}) => ({
-                    tabBarIcon: ({focused, color, size}) => renderTabBarIcon(route.name, focused, color, size)
-                })}
-                tabBarOptions={{
-                    activeTintColor: Colors.ORANGE,
-                    inactiveTintColor: Colors.WHITE,
-                    style: {
+                    tabBarIcon: ({focused, color, size}) => renderTabBarIcon(route.name, focused, color, size),
+                    headerShown: false,
+                    tabBarActiveTintColor: Colors.ORANGE,
+                    tabBarInactiveTintColor: Colors.WHITE,
+                    tabBarStyle: {
                         borderTopWidth: 0,
                         backgroundColor: Colors.BLACK
                     }
-                }}
+                })}
             >
                 <Tab.Screen
-                    name="Advices"
+                    name="AdvicesStack"
                     component={AdvicesStackScreen}
                     options={{title: i18next.t('menu.advices')}}
                 />
                 <Tab.Screen
-                    name="Encyclopedia"
+                    name="EncyclopediaStack"
                     component={EncyclopediaStackScreen}
                     options={{title: i18next.t('menu.encyclopedia')}}
                 />
                 <Tab.Screen
-                    name="Simulators"
+                    name="SimulatorsStack"
                     component={SimulatorsStackScreen}
                     options={{title: i18next.t('menu.simulators')}}
                 />
