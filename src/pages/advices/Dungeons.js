@@ -3,7 +3,7 @@
 import React from 'react';
 import {Dimensions, Image, Pressable, SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
 import {withTranslation} from 'react-i18next';
-import _ from "lodash";
+import _ from 'lodash';
 import {VerticalWheelPicker} from '../../components';
 import Sets from '../../models/Sets';
 import {Colors, Fonts, Images} from '../../utils';

@@ -1,11 +1,11 @@
 // @flow
 
-import React from "react";
-import {StyleSheet, Text, View} from "react-native";
-import RNPickerSelect from "react-native-picker-select";
-import {withTranslation} from "react-i18next";
-import {Chevron} from "../icons";
-import {Colors, Fonts} from "../../utils";
+import React from 'react';
+import {StyleSheet, Text, View} from 'react-native';
+import RNPickerSelect from 'react-native-picker-select';
+import {withTranslation} from 'react-i18next';
+import {Chevron} from '../icons';
+import {Colors, Fonts} from '../../utils';
 
 type Props = {
     value: string,
