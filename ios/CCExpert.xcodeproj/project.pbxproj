@@ -14,6 +14,9 @@
 		6AC6878E24DD88E700014AEB /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AC6878D24DD88E700014AEB /* BootSplash.storyboard */; };
 		6AC6879024DD8ACC00014AEB /* www in Resources */ = {isa = PBXBuildFile; fileRef = 6AC6878F24DD8ACB00014AEB /* www */; };
 		974649703240E37C3085BF8F /* libPods-CCExpert.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 38D0B51AF5AE4A8BDA3AE54D /* libPods-CCExpert.a */; };
+		CB5BD4FC46294787968C6811 /* Comfortaa-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 333F039D96A943F5B4BF4147 /* Comfortaa-Bold.ttf */; };
+		BEA60AB5FD204E42A0624E6C /* Comfortaa-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83F86C467AF64805A3728644 /* Comfortaa-Regular.ttf */; };
+		3D316042B3C244C4BE5C6373 /* SirinStencil-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B3DFD8807C84A9D9E6F9A8D /* SirinStencil-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +38,9 @@
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		FEBE8D18D8206AF7742B8708 /* libPods-CCExpert-CCExpertTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CCExpert-CCExpertTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		333F039D96A943F5B4BF4147 /* Comfortaa-Bold.ttf */ = {isa = PBXFileReference; name = "Comfortaa-Bold.ttf"; path = "../src/assets/fonts/Comfortaa-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		83F86C467AF64805A3728644 /* Comfortaa-Regular.ttf */ = {isa = PBXFileReference; name = "Comfortaa-Regular.ttf"; path = "../src/assets/fonts/Comfortaa-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4B3DFD8807C84A9D9E6F9A8D /* SirinStencil-Regular.ttf */ = {isa = PBXFileReference; name = "SirinStencil-Regular.ttf"; path = "../src/assets/fonts/SirinStencil-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +108,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				19336DF4DF4651B6400216C9 /* Pods */,
+				088F536D7D1248B086084C07 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -115,6 +122,17 @@
 			);
 			name = Products;
 			sourceTree = "<group>";
+		};
+		088F536D7D1248B086084C07 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				333F039D96A943F5B4BF4147 /* Comfortaa-Bold.ttf */,
+				83F86C467AF64805A3728644 /* Comfortaa-Regular.ttf */,
+				4B3DFD8807C84A9D9E6F9A8D /* SirinStencil-Regular.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -181,6 +199,9 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				6AC6878C24DD88C800014AEB /* CCExpert.xcworkspace in Resources */,
 				6AC6878E24DD88E700014AEB /* BootSplash.storyboard in Resources */,
+				CB5BD4FC46294787968C6811 /* Comfortaa-Bold.ttf in Resources */,
+				BEA60AB5FD204E42A0624E6C /* Comfortaa-Regular.ttf in Resources */,
+				3D316042B3C244C4BE5C6373 /* SirinStencil-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

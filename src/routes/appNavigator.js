@@ -6,7 +6,7 @@ import SimulatorsStackScreen from './simulatorsStack';
 import EncyclopediaStackScreen from './encyclopediaStack';
 import AdvicesStackScreen from './advicesStack';
 import {Book, HeadBulb, Simulation} from '../components/icons';
-import {Colors} from '../utils';
+import {Colors, Fonts} from '../utils';
 
 function renderTabBarIcon(routeName, focused, color, size) {
     switch (routeName) {
@@ -30,6 +30,10 @@ export default function AppNavigator() {
                     headerShown: false,
                     tabBarActiveTintColor: Colors.ORANGE,
                     tabBarInactiveTintColor: Colors.WHITE,
+                    tabBarLabelStyle: {
+                        fontSize: 10,
+                        fontFamily: Fonts.Comfortaa.Regular
+                    },
                     tabBarStyle: {
                         borderTopWidth: 0,
                         backgroundColor: Colors.BLACK

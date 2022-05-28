@@ -1,13 +1,12 @@
 // @flow
 
 import React from 'react';
-import {Dimensions, Image, SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
-import {RectButton} from 'react-native-gesture-handler';
+import {Dimensions, Image, Pressable, SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
 import {withTranslation} from 'react-i18next';
 import _ from "lodash";
 import {VerticalWheelPicker} from '../../components';
 import Sets from '../../models/Sets';
-import {Colors, Images} from '../../utils';
+import {Colors, Fonts, Images} from '../../utils';
 
 class Dungeons extends React.Component {
     constructor(props) {
@@ -85,18 +84,26 @@ class Dungeons extends React.Component {
                     </View>
 
                     <View style={styles.buttons_container}>
-                        <View style={styles.button_container}>
+                        <View style={styles.button_wrapper}>
                             {f2pVideo && (
-                                <RectButton style={styles.button} onPress={() => navigation.navigate('Dungeon', {dungeon: f2pVideo})}>
+                                <Pressable
+                                    style={styles.button}
+                                    android_ripple={{color: 'rgba(255,163,26,0.12)'}}
+                                    onPress={() => navigation.navigate('Dungeon', {dungeon: f2pVideo})}
+                                >
                                     <Text style={styles.button_text}>{t('dungeons.f2p-video')}</Text>
-                                </RectButton>
+                                </Pressable>
                             )}
                         </View>
-                        <View style={styles.button_container}>
+                        <View style={styles.button_wrapper}>
                             {p2wVideo && (
-                                <RectButton style={styles.button} onPress={() => navigation.navigate('Dungeon', {dungeon: p2wVideo})}>
+                                <Pressable
+                                    style={styles.button}
+                                    android_ripple={{color: 'rgba(255,163,26,0.12)'}}
+                                    onPress={() => navigation.navigate('Dungeon', {dungeon: p2wVideo})}
+                                >
                                     <Text style={styles.button_text}>{t('dungeons.p2w-video')}</Text>
-                                </RectButton>
+                                </Pressable>
                             )}
                         </View>
                     </View>
@@ -140,23 +147,26 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row'
     },
-    button_container: {
-        flex: 1
+    button_wrapper: {
+        flex: 1,
+        height: 60,
+        margin: 10,
+        borderRadius: 30,
+        overflow: 'hidden',
+        backgroundColor: Colors.BLACK_LIGHT,
+        shadowOpacity: 0.2,
+        shadowOffset: {width: 0, height: 1},
+        elevation: 2
     },
     button: {
         flex: 1,
-        height: 60,
-        borderRadius: 30,
-        margin: 10,
+        height: "100%",
         justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: Colors.BLACK_LIGHT,
-        elevation: 2,
-        shadowOpacity: 0.2,
-        shadowOffset: {width: 0, height: 1}
+        alignItems: 'center'
     },
     button_text: {
-        fontSize: 14,
+        fontSize: 12,
+        fontFamily: Fonts.Comfortaa.Regular,
         color: Colors.ORANGE_LIGHT
     },
     no_video: {
@@ -164,7 +174,9 @@ const styles = StyleSheet.create({
         paddingTop: 20,
         paddingHorizontal: 10,
         textAlign: 'center',
-        fontSize: 14,
+
+        fontSize: 12,
+        fontFamily: Fonts.Comfortaa.Regular,
         color: Colors.ORANGE_LIGHT
     }
 });

@@ -1,9 +1,8 @@
 // @flow
 
 import React from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
-import Touchable from 'react-native-platform-touchable';
-import {Colors, Images} from '../../utils';
+import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
+import {Colors, Fonts, Images} from '../../utils';
 
 type Props = {
     title: string,
@@ -17,7 +16,11 @@ export default class TouchableCard extends React.Component<Props> {
         const {onPress, title, icon, style} = this.props;
 
         return (
-            <Touchable style={[styles.main_container, style]} onPress={onPress}>
+            <Pressable
+                style={[styles.main_container, style]}
+                android_ripple={{color: 'rgba(255,163,26,0.12)'}}
+                onPress={onPress}
+            >
                 <View style={styles.sub_container}>
                     <Text style={styles.title}>
                         {title}
@@ -31,7 +34,7 @@ export default class TouchableCard extends React.Component<Props> {
                         />
                     </View>
                 </View>
-            </Touchable>
+            </Pressable>
         );
     }
 }
@@ -41,16 +44,18 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         padding: 10,
         backgroundColor: Colors.BLACK_LIGHT,
-        elevation: 2,
-        shadowOpacity: 0.2,
-        shadowOffset: {width: 0, height: 1}
+        elevation: 3,
+        shadowOffset: {width: 0, height: 1},
+        shadowOpacity: 0.22,
+        shadowRadius: 2.22
     },
     sub_container: {
         alignItems: "center"
     },
     title: {
-        color: Colors.WHITE,
-        fontSize: 16
+        fontSize: 20,
+        fontFamily: Fonts.SirinStencil,
+        color: Colors.WHITE
     },
     image_container: {
         paddingTop: 10,

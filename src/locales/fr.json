@@ -15,7 +15,7 @@
   },
   "heroes": {
     "title": "Héros",
-    "hero-search": "Chercher un héros",
+    "hero-search": "Rechercher un héros",
     "no-result": "Aucun résultat",
     "recommendations": {
       "gw-attack": "Mode GdG - Attaque",

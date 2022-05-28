@@ -2,7 +2,7 @@
 
 import React from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
-import {Colors} from '../../utils';
+import {Colors, Fonts} from '../../utils';
 
 type Props = {
     dataSource: Array<string>,
@@ -136,10 +136,14 @@ const styles = StyleSheet.create({
     },
     item_text: {
         fontSize: 20,
-        color: Colors.WHITE
+        fontFamily: Fonts.Comfortaa.Regular,
+        color: Colors.WHITE,
+        includeFontPadding: false
     },
     selected_item_text: {
         fontSize: 30,
-        color: Colors.WHITE
+        fontFamily: Fonts.Comfortaa.Regular,
+        color: Colors.WHITE,
+        includeFontPadding: false
     }
 });

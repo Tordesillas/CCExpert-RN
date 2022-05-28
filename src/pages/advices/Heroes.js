@@ -104,11 +104,7 @@ const styles = StyleSheet.create({
     },
     search_bar: {
         flex: 1,
-        marginRight: 10,
-        paddingLeft: 10,
-        backgroundColor: Colors.GREY_LIGHT,
-        borderRadius: 5,
-        color: Colors.WHITE
+        marginRight: 10
     },
     filter_button: {
         aspectRatio: 1,

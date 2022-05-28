@@ -3,7 +3,7 @@
 import React from 'react';
 import {View, Text, Dimensions, StyleSheet} from 'react-native';
 import {ScrollView}  from 'react-native-gesture-handler';
-import {Colors} from '../../utils';
+import {Colors, Fonts} from '../../utils';
 
 type Props = {
     rowItems?: number,
@@ -141,10 +141,15 @@ const styles = StyleSheet.create({
     },
     item: {
         fontSize: 20,
-        color: Colors.WHITE
+        fontFamily: Fonts.Comfortaa.Regular,
+        color: Colors.WHITE,
+        includeFontPadding: false
     },
     selected_text: {
-        fontSize: 30
+        fontSize: 30,
+        fontFamily: Fonts.Comfortaa.Regular,
+        color: Colors.WHITE,
+        includeFontPadding: false
     },
     highlight: {
         height: 60,

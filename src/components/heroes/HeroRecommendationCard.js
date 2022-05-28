@@ -2,7 +2,7 @@
 
 import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
-import {Colors} from '../../utils';
+import {Colors, Fonts} from '../../utils';
 
 export default class HeroRecommendationCard extends React.Component {
     render() {
@@ -36,16 +36,17 @@ const styles = StyleSheet.create({
         margin: 2,
         backgroundColor: Colors.BLACK_LIGHT,
         borderRadius: 2,
-        elevation: 2,
-        shadowOpacity: 0.2,
-        shadowRadius: 1.41,
-        shadowOffset: {width: 0, height: 1}
+        elevation: 3,
+        shadowOffset: {width: 0, height: 1},
+        shadowOpacity: 0.22,
+        shadowRadius: 2.22
     },
     title: {
         padding: 5,
 
-        color: Colors.WHITE,
-        fontSize: 14
+        fontSize: 12,
+        fontFamily: Fonts.Comfortaa.Regular,
+        color: Colors.WHITE
     },
     images_container: {
         padding: 5,

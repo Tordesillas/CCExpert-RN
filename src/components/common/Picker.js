@@ -5,7 +5,7 @@ import {StyleSheet, Text, View} from "react-native";
 import RNPickerSelect from "react-native-picker-select";
 import {withTranslation} from "react-i18next";
 import {Chevron} from "../icons";
-import {Colors} from "../../utils";
+import {Colors, Fonts} from "../../utils";
 
 type Props = {
     value: string,
@@ -36,7 +36,7 @@ class Picker extends React.Component<Props> {
                         inputIOS: [styles.input, inputStyle],
                         inputAndroid: [styles.input, inputStyle],
                         iconContainer: styles.icon_container,
-                        chevron: {backgroundColor: Colors.WHITE},
+                        chevron: styles.chevron,
                         placeholder: styles.placeholder
                     }}
                     useNativeAndroidPickerStyle={false}
@@ -57,26 +57,32 @@ const styles = StyleSheet.create({
         paddingVertical: 5,
         backgroundColor: Colors.BLACK_LIGHT,
         borderRadius: 2,
-        elevation: 2,
-        shadowOpacity: 0.2,
-        shadowRadius: 1.41,
-        shadowOffset: {width: 0, height: 1}
+        elevation: 3,
+        shadowOffset: {width: 0, height: 1},
+        shadowOpacity: 0.22,
+        shadowRadius: 2.22
     },
     title: {
-        fontSize: 14,
-        color: Colors.WHITE
+        fontSize: 12,
+        fontFamily: Fonts.Comfortaa.Regular,
+        color: Colors.ORANGE
     },
     input: {
-        fontSize: 14,
+        fontSize: 12,
+        fontFamily: Fonts.Comfortaa.Regular,
         color: Colors.WHITE
     },
     icon_container: {
-        height: "100%",
-        alignItems: "center",
-        justifyContent: "center"
+        height: '100%',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    chevron: {
+        backgroundColor: Colors.WHITE
     },
     placeholder: {
-        fontSize: 14,
+        fontSize: 12,
+        fontFamily: Fonts.Comfortaa.Regular,
         color: Colors.GREY_LIGHT
     }
 });

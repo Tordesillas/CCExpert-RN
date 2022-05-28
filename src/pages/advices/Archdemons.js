@@ -5,8 +5,8 @@ import {SafeAreaView, StyleSheet} from 'react-native';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import {withTranslation} from 'react-i18next';
 import ArchdemonFragment from './ArchdemonFragment';
-import {Colors} from '../../utils';
 import Sets from '../../models/Sets';
+import {Colors, Fonts} from '../../utils';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -30,17 +30,21 @@ class Archdemons extends React.Component {
         return (
             <SafeAreaView style={styles.main_container}>
                 <Tab.Navigator
-                    tabBarOptions={{
-                        activeTintColor: Colors.ORANGE,
-                        inactiveTintColor: Colors.WHITE,
-                        style: {
-                            borderTopWidth: 0,
-                            backgroundColor: Colors.BLACK_LIGHT
-                        },
-                        indicatorStyle: {
+                    screenOptions={{
+                        tabBarActiveTintColor: Colors.ORANGE,
+                        tabBarInactiveTintColor: Colors.WHITE,
+                        tabBarIndicatorStyle: {
                             backgroundColor: Colors.ORANGE
                         },
-                        scrollEnabled: true
+                        tabBarLabelStyle: {
+                            fontSize: 12,
+                            fontFamily: Fonts.Comfortaa.Regular
+                        },
+                        tabBarScrollEnabled: true,
+                        tabBarStyle: {
+                            borderTopWidth: 0,
+                            backgroundColor: Colors.BLACK_LIGHT
+                        }
                     }}
                     backBehavior='none'
                 >

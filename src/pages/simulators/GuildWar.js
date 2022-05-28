@@ -5,7 +5,7 @@ import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import {withTranslation} from 'react-i18next';
 import {TextField} from '../../components';
 import {GuildWarProcessor} from '../../services';
-import {Colors} from '../../utils';
+import {Colors, Fonts} from '../../utils';
 
 class GuildWar extends React.Component {
     state = {
@@ -23,21 +23,22 @@ class GuildWar extends React.Component {
                     <View style={styles.field_container}>
                         <Text style={styles.field_title}>{t('guild-war.power-field')}</Text>
                         <TextField
-                            style={styles.text_field}
                             placeholder={t('guild-war.power-placeholder')}
-                            placeholderTextColor={Colors.GREY_LIGHT}
                             value={power}
                             onChangeText={text => this.setState({power: text})}
+                            keyboardType='number-pad'
+                            blurOnSubmit={false}
+                            onSubmitEditing={() => this.scoreField.focus()}
                         />
                     </View>
                     <View style={styles.field_container}>
                         <Text style={styles.field_title}>{t('guild-war.score-field')}</Text>
                         <TextField
-                            style={styles.text_field}
                             placeholder={t('guild-war.score-placeholder')}
-                            placeholderTextColor={Colors.GREY_LIGHT}
                             value={score}
                             onChangeText={text => this.setState({score: text})}
+                            ref={(input) => this.scoreField = input}
+                            keyboardType='number-pad'
                         />
                     </View>
                 </View>
@@ -58,31 +59,32 @@ const styles = StyleSheet.create({
     },
     fields_container: {
         margin: 4,
-        paddingHorizontal: 10,
-        paddingVertical: 5,
+        padding: 10,
         backgroundColor: Colors.BLACK_LIGHT,
         borderRadius: 2,
-        elevation: 2,
-        shadowOpacity: 0.2,
-        shadowRadius: 1.41,
-        shadowOffset: {width: 0, height: 1}
+        elevation: 3,
+        shadowOffset: {width: 0, height: 1},
+        shadowOpacity: 0.22,
+        shadowRadius: 2.22
     },
     field_container: {
         flexDirection: 'column',
-        paddingVertical: 15
+        paddingVertical: 10
     },
     field_title: {
-        fontSize: 14,
-        color: Colors.WHITE
-    },
-    text_field: {
-        color: Colors.WHITE
+        marginBottom: 3,
+
+        fontSize: 12,
+        fontFamily: Fonts.Comfortaa.Regular,
+        color: Colors.ORANGE
     },
     result_container: {
-        marginHorizontal: 4,
+        marginHorizontal: 8,
         marginVertical: 10
     },
     result_text: {
+        fontSize: 14,
+        fontFamily: Fonts.Comfortaa.Regular,
         color: Colors.ORANGE
     }
 });

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Platform, TouchableNativeFeedback, TouchableOpacity, View} from 'react-native';
-import {Colors} from '../utils';
+import {Colors, Fonts} from '../utils';
 
 const HIT_SLOP = {top: 20, left: 20, bottom: 20, right: 20};
 
@@ -37,12 +37,12 @@ export const defaultNavigationOptions = {
     headerTintColor: Colors.WHITE,
     headerStyle: {
         backgroundColor: Colors.BLACK,
-        shadowColor: Platform.OS === 'android' ? undefined : 'transparent'
     },
+    headerShadowVisible: false,
     headerTitleStyle: {
-        color: Colors.WHITE,
-        fontSize: 16,
-        fontWeight: 'normal'
+        fontSize: 24,
+        fontFamily: Fonts.SirinStencil,
+        color: Colors.ORANGE
     },
     headerTitleAlign: 'center',
     headerStatusBarHeight: Platform.OS === 'android' ? 0 : undefined,

@@ -6,7 +6,7 @@ import _ from 'lodash';
 import {withTranslation} from 'react-i18next';
 import {HorizontalWheelPicker} from '../../components';
 import Sets from '../../models/Sets';
-import {Colors} from '../../utils';
+import {Colors, Fonts} from '../../utils';
 
 type State = {
     descriptionShown: number
@@ -76,10 +76,10 @@ const styles = StyleSheet.create({
         margin: 4,
         backgroundColor: Colors.BLACK_LIGHT,
         borderRadius: 2,
-        elevation: 2,
-        shadowOpacity: 0.2,
-        shadowRadius: 1.41,
-        shadowOffset: {width: 0, height: 1}
+        elevation: 3,
+        shadowOffset: {width: 0, height: 1},
+        shadowOpacity: 0.22,
+        shadowRadius: 2.22
     },
     image: {
         maxWidth: 100,
@@ -92,8 +92,9 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         paddingHorizontal: 5,
 
-        color: Colors.WHITE,
-        fontSize: 16
+        fontSize: 20,
+        fontFamily: Fonts.SirinStencil,
+        color: Colors.WHITE
     },
     card: {
         flexDirection: 'column',
@@ -101,16 +102,17 @@ const styles = StyleSheet.create({
         marginBottom: 4,
         backgroundColor: Colors.BLACK_LIGHT,
         borderRadius: 2,
-        elevation: 2,
-        shadowOpacity: 0.2,
-        shadowRadius: 1.41,
-        shadowOffset: {width: 0, height: 1}
+        elevation: 3,
+        shadowOffset: {width: 0, height: 1},
+        shadowOpacity: 0.22,
+        shadowRadius: 2.22
     },
     card_title: {
         padding: 5,
 
-        color: Colors.WHITE,
-        fontSize: 16
+        fontSize: 14,
+        fontFamily: Fonts.Comfortaa.Regular,
+        color: Colors.ORANGE
     },
     description_wrapper: {
         height: 200,
@@ -120,7 +122,8 @@ const styles = StyleSheet.create({
     },
     description: {
         textAlign: 'center',
-        color: Colors.WHITE,
-        fontSize: 13
+        fontSize: 12,
+        fontFamily: Fonts.Comfortaa.Regular,
+        color: Colors.WHITE
     }
 });

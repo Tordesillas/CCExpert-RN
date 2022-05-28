@@ -1,49 +1,43 @@
 // @flow
 
 import React from 'react';
-import {FlatList, Image, SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {FlatList, Image, ScrollView, StyleSheet, Text, View} from 'react-native';
 import {withTranslation} from 'react-i18next';
 import {ArchdemonCard} from '../../components';
-import {Colors, Images} from '../../utils';
+import {Colors, Fonts, Images} from '../../utils';
 
 class ArchdemonFragment extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.archdemon = props.route.params.archdemon;
-    }
-
     render() {
-        return (
-            <SafeAreaView style={styles.main_container}>
-                <ScrollView style={styles.main_container}>
-                    <View style={styles.archdemon_card}>
-                        <View style={styles.archdemon_description_container}>
-                            <Text style={styles.archdemon_description}>
-                                {this.archdemon.getDescription()}
-                            </Text>
-                        </View>
-                        <Image
-                            source={Images.archdemon}
-                            style={styles.archdemon_picture}
-                            resizeMode="contain"
-                            fadeDuration={0}
-                        />
-                    </View>
+        const {archdemon} = this.props.route.params;
 
-                    <FlatList
-                        contentContainerStyle={{margin: 2}}
-                        data={this.archdemon.getHeroesSuggestion()}
-                        keyExtractor={(item, index) => index.toString()}
-                        numColumns={2}
-                        renderItem={({item}) => (
-                            <ArchdemonCard
-                                archdemonSuggestion={item}
-                            />
-                        )}
+        return (
+            <ScrollView style={styles.main_container}>
+                <View style={styles.archdemon_card}>
+                    <View style={styles.archdemon_description_container}>
+                        <Text style={styles.archdemon_description}>
+                            {archdemon.getDescription()}
+                        </Text>
+                    </View>
+                    <Image
+                        source={Images.archdemon}
+                        style={styles.archdemon_picture}
+                        resizeMode="contain"
+                        fadeDuration={0}
                     />
-                </ScrollView>
-            </SafeAreaView>
+                </View>
+
+                <FlatList
+                    contentContainerStyle={{margin: 2}}
+                    data={archdemon.getHeroesSuggestion()}
+                    keyExtractor={(item, index) => index.toString()}
+                    numColumns={2}
+                    renderItem={({item}) => (
+                        <ArchdemonCard
+                            archdemonSuggestion={item}
+                        />
+                    )}
+                />
+            </ScrollView>
         );
     }
 }
@@ -74,8 +68,9 @@ const styles = StyleSheet.create({
         width: '100%',
         textAlign: 'center',
 
-        color: Colors.WHITE,
-        fontSize: 14
+        fontSize: 14,
+        fontFamily: Fonts.Comfortaa.Regular,
+        color: Colors.WHITE
     },
     archdemon_picture: {
         height: '100%',

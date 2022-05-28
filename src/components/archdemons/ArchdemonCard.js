@@ -45,9 +45,10 @@ const styles = StyleSheet.create({
         margin: 2,
         backgroundColor: Colors.BLACK_LIGHT,
         borderRadius: 2,
-        elevation: 2,
-        shadowOpacity: 0.2,
-        shadowOffset: {width: 0, height: 1}
+        elevation: 3,
+        shadowOffset: {width: 0, height: 1},
+        shadowOpacity: 0.22,
+        shadowRadius: 2.22
     },
     image: {
         aspectRatio: 1,
