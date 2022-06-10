@@ -1,150 +1,198 @@
-import React from 'react';
-import {View, Text, Dimensions, StyleSheet} from 'react-native';
-import {ScrollView}  from 'react-native-gesture-handler';
+import React, {PureComponent, ReactNode} from 'react';
+import {
+    LayoutChangeEvent,
+    NativeScrollEvent,
+    NativeSyntheticEvent,
+    Platform,
+    ScrollView,
+    StyleSheet,
+    Text,
+    TouchableWithoutFeedback,
+    View
+} from 'react-native';
 import {Colors, Fonts} from '../../utils';
 
 interface Props {
-    rowItems?: number;
-    items: Array<{label: string, value: number}>;
-    onSelect: (value: string) => void;
-    initialIdx?: number;
+    data: number[];
+    selectedItem: number;
+    itemWidth?: number;
+    defaultIndex?: number;
+    animatedScrollToDefaultIndex?: boolean;
+    onChange?: (position: number) => void;
 }
 
 interface State {
-    size: number;
-    selected: number;
+    scrollViewWidth: number;
 }
 
-export default class HorizontalWheelPicker extends React.Component<Props, State> {
+export default class HorizontalWheelPicker extends PureComponent<Props, State> {
     static defaultProps = {
-        rowItems: 5,
-        initialIdx: 0
+        itemWidth: 80
     };
 
-    scrollView: ScrollView | null;
-    scrollOffset: number;
-    isParking: boolean;
+    private paddingSide: number;
+    private refScrollView: React.RefObject<ScrollView>;
+    private ignoreNextScroll: boolean;
+    private timeoutDelayedSnap: number | NodeJS.Timeout;
+    private currentPositionX: number;
+    private readonly defaultScrollEventThrottle = 16;
+    private readonly defaultDecelerationRate = Platform.OS == 'ios' ? 50 : 0.9;
+    private readonly defaultSnapTimeout = 200;
 
     constructor(props: Props) {
         super(props);
 
-        this.state = {
-            size: Dimensions.get('window').width / props.rowItems!,
-            selected: props.initialIdx!
-        };
+        this.paddingSide = 0;
+        this.refScrollView = React.createRef();
+        this.ignoreNextScroll = false;
+        this.timeoutDelayedSnap = 0;
+        this.currentPositionX = 0;
 
-        this.scrollView = null;
-        this.scrollOffset = 0;
-        this.isParking = false;
+        this.state = {
+            scrollViewWidth: 0
+        };
     }
 
-    _calculateLayout = () => {
-        this.scrollView!.scrollTo({x: this.props.initialIdx! * this.state.size, y: 0, animated: false});
-    };
+    private onLayoutScrollView = (e: LayoutChangeEvent) => {
+        setTimeout(this.scrollToDefaultIndex, 0);
+        const {width} = e.nativeEvent.layout;
+        this.setState(() => ({scrollViewWidth: width}));
+        this.paddingSide = width / 2 - this.props.itemWidth! / 2;
+    }
 
-    _renderItem = (item: any, idx: number) => {
-        const {size, selected} = this.state;
+    private onScroll = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
+        this.currentPositionX = e.nativeEvent.contentOffset.x;
+    }
 
-        const {label, value} = item;
+    private onScrollBeginDrag = () => {
+        this.ignoreNextScroll = false;
+    }
+
+    private onScrollEndDrag = () => {
+        this.cancelDelayedSnap();
+        if (this.ignoreNextScroll) {
+            this.ignoreNextScroll = false;
+        } else {
+            this.setDelayedSnap();
+        }
+    }
+
+    private onMomentumScrollBegin = () => {
+        this.ignoreNextScroll = false;
+        this.setDelayedSnap();
+    }
+
+    private onMomentumScrollEnd = () => {
+        if (this.ignoreNextScroll) {
+            this.ignoreNextScroll = false;
+        } else {
+            this.setDelayedSnap();
+        }
+    }
+
+    public scrollToPosition = (position: number) => {
+        const {itemWidth, onChange} = this.props;
+        const x = position * itemWidth!;
+        this.ignoreNextScroll = true;
+
+        if (this.refScrollView.current != null) {
+            this.refScrollView.current.scrollTo({x, y: 0, animated: true});
+        }
+
+        if (onChange != null) {
+            if (position < 1) {
+                onChange(0);
+            } else if (position > this.props.data.length) {
+                onChange(this.props.data.length - 1);
+            } else {
+                onChange(position);
+            }
+        }
+    }
+
+    private cancelDelayedSnap = () => {
+        clearTimeout(this.timeoutDelayedSnap as NodeJS.Timeout);
+    }
+
+    private setDelayedSnap = (timeout?: number) => {
+        const {itemWidth} = this.props;
+        const snapTimeout = timeout || this.defaultSnapTimeout;
+        this.cancelDelayedSnap();
+        this.timeoutDelayedSnap = setTimeout(() => {
+            const nextPosition = Math.round(this.currentPositionX / itemWidth!);
+            this.scrollToPosition(nextPosition);
+        }, snapTimeout);
+    }
+
+    scrollToDefaultIndex = () => {
+        if (this.refScrollView.current != null && this.props.defaultIndex != null) {
+            const {defaultIndex, itemWidth, data} = this.props;
+
+            if (defaultIndex >= data.length) {
+                return;
+            }
+
+            const x = defaultIndex * itemWidth!;
+            this.refScrollView.current.scrollTo({x, y: 0, animated: this.props.animatedScrollToDefaultIndex || false});
+        }
+    }
+
+    renderItem(item: any): ReactNode {
+        const {itemWidth, selectedItem} = this.props;
 
         return (
-            <View
-                key={`item-${idx}-${value}`}
-                style={[styles.itemContainer, {width: size}]}
-            >
-                <Text style={[styles.item, (selected === idx) && styles.selected_text]}>
-                    {label}
+            <View style={[styles.item_container, {width: itemWidth}]}>
+                <Text style={[styles.item, (selectedItem === item) && styles.selected_text]}>
+                    {item}
                 </Text>
             </View>
         );
-    };
-
-    _handleScroll = (event: any) => {
-        this.scrollOffset = event.nativeEvent.contentOffset.x;
-    };
-
-    _handleParking = () => {
-        const {size} = this.state;
-        const {onSelect, items} = this.props;
-
-        this.isParking = true;
-
-        setTimeout(() => {
-            if (this.isParking) {
-                const selected = this._selectItem();
-                this.setState({selected});
-                this.isParking = false;
-                this.scrollView!.scrollTo({y: 0, x: size * selected, animated: true});
-                onSelect(items[selected].label);
-            }
-        }, 150);
-    };
-
-    _cancelParking = () => {
-        this.isParking = false;
-    }
-
-    _selectItem = () => {
-        const {items, onSelect} = this.props;
-        const {size} = this.state;
-
-        const idx = Math.abs(Math.round(this.scrollOffset / size));
-        const selected = idx === items.length ? idx - 1 : idx;
-
-        this.setState({selected});
-
-        onSelect(items[selected].label);
-        return selected;
     }
 
     render() {
-        const {items, rowItems} = this.props;
-        const {size} = this.state;
-
-        const sideItems = (rowItems! - 1) / 2;
+        const {data} = this.props;
 
         return (
-            <View style={styles.main_container}>
-                <View
-                    style={[styles.highlight, {left: sideItems * size, width: size}]}
-                />
+            <>
                 <ScrollView
                     horizontal
-                    ref={(ref: ScrollView) => this.scrollView = ref}
                     showsHorizontalScrollIndicator={false}
-                    onLayout={this._calculateLayout}
-                    snapToInterval={size}
-                    onScroll={this._handleScroll}
-                    onTouchEnd={this._handleParking}
-                    onScrollEndDrag={this._handleParking}
-                    scrollEventThrottle={16}
-                    onMomentumScrollBegin={this._cancelParking}
-                    onMomentumScrollEnd={this._selectItem}
-                    shouldCancelWhenOutside={false}
-                    contentContainerStyle={{paddingHorizontal: size * sideItems}}
+                    scrollEventThrottle={this.defaultScrollEventThrottle}
+                    decelerationRate={this.defaultDecelerationRate}
+                    contentContainerStyle={{paddingHorizontal: this.paddingSide}}
+                    ref={this.refScrollView}
+                    onLayout={this.onLayoutScrollView}
+                    onScroll={this.onScroll}
+                    onScrollBeginDrag={this.onScrollBeginDrag}
+                    onScrollEndDrag={this.onScrollEndDrag}
+                    onMomentumScrollBegin={this.onMomentumScrollBegin}
+                    onMomentumScrollEnd={this.onMomentumScrollEnd}
                 >
-                    {items.map((item, idx) => this._renderItem(item, idx))}
+                    {data.map((item: any, index: number) => (
+                        <TouchableWithoutFeedback onPress={() => this.scrollToPosition(index)} key={index}>
+                            {this.renderItem(item)}
+                        </TouchableWithoutFeedback>
+                    ))}
                 </ScrollView>
-            </View>
+
+                <View style={styles.highlight_wrapper} pointerEvents='none'>
+                    <View style={styles.highlight}/>
+                </View>
+            </>
         );
     }
 }
 
 const styles = StyleSheet.create({
-    main_container: {
-        width: '100%',
-        flexDirection: 'row',
-        height: 60,
-        marginVertical: 2
-    },
-    itemContainer: {
+    item_container: {
+        height: 70,
         alignItems: 'center',
         justifyContent: 'center'
     },
     item: {
         fontSize: 20,
         fontFamily: Fonts.Comfortaa.Regular,
-        color: Colors.WHITE,
+        color: Colors.GREY_LIGHT,
         includeFontPadding: false
     },
     selected_text: {
@@ -153,12 +201,18 @@ const styles = StyleSheet.create({
         color: Colors.WHITE,
         includeFontPadding: false
     },
-    highlight: {
-        height: 60,
+    highlight_wrapper: {
         position: 'absolute',
-        top: 0,
-        borderTopWidth: 2,
-        borderBottomWidth: 2,
+        bottom: 5,
+        left: 0,
+        right: 0,
+        alignItems: 'center'
+    },
+    highlight: {
+        width: 60,
+        height: 65,
+        borderLeftWidth: 2,
+        borderRightWidth: 2,
         borderColor: Colors.ORANGE_LIGHT
     }
 });

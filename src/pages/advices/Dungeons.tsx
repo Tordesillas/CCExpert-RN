@@ -43,7 +43,7 @@ class Dungeons extends React.Component<Props, State> {
     }
 
     searchVideo() {
-        const videosAvailable = Sets.get().dungeons.filter(dungeon => parseInt(dungeon.base) === this.base && parseInt(dungeon.door) === this.door);
+        const videosAvailable = Sets.get().dungeons.filter(dungeon => (dungeon.base === this.base) && (dungeon.door === this.door));
         const f2pVideo = videosAvailable.filter(dungeon => dungeon.f2p)[0] || null;
         const p2wVideo = videosAvailable.filter(dungeon => !dungeon.f2p)[0] || null;
 
@@ -69,7 +69,7 @@ class Dungeons extends React.Component<Props, State> {
                                 <VerticalWheelPicker
                                     dataSource={_.range(1, 9)}
                                     onValueChange={(value) => {
-                                        this.door = parseInt(value);
+                                        this.door = value;
                                         this.searchVideo();
                                         this.setState({dungeonImage: Images[`dungeon${value}` as keyof typeof Images]});
                                     }}
@@ -88,7 +88,7 @@ class Dungeons extends React.Component<Props, State> {
                             <VerticalWheelPicker
                                 dataSource={_.range(1, 11)}
                                 onValueChange={(value) => {
-                                    this.base = parseInt(value);
+                                    this.base = value;
                                     this.searchVideo();
                                 }}
                                 height={400}
@@ -98,8 +98,8 @@ class Dungeons extends React.Component<Props, State> {
                     </View>
 
                     <View style={styles.buttons_container}>
-                        <View style={styles.button_wrapper}>
-                            {f2pVideo && (
+                        {f2pVideo && (
+                            <View style={styles.button_wrapper}>
                                 <Pressable
                                     style={styles.button}
                                     android_ripple={{color: 'rgba(255,163,26,0.12)'}}
@@ -107,10 +107,11 @@ class Dungeons extends React.Component<Props, State> {
                                 >
                                     <Text style={styles.button_text}>{t('dungeons.f2p-video')}</Text>
                                 </Pressable>
-                            )}
-                        </View>
-                        <View style={styles.button_wrapper}>
-                            {p2wVideo && (
+                            </View>
+                        )}
+
+                        {p2wVideo && (
+                            <View style={styles.button_wrapper}>
                                 <Pressable
                                     style={styles.button}
                                     android_ripple={{color: 'rgba(255,163,26,0.12)'}}
@@ -118,8 +119,8 @@ class Dungeons extends React.Component<Props, State> {
                                 >
                                     <Text style={styles.button_text}>{t('dungeons.p2w-video')}</Text>
                                 </Pressable>
-                            )}
-                        </View>
+                            </View>
+                        )}
                     </View>
                     {!f2pVideo && !p2wVideo && (
                         <Text style={styles.no_video}>{t('dungeons.no-video-available')}</Text>

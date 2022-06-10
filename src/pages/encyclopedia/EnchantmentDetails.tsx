@@ -52,10 +52,9 @@ class EnchantmentDetails extends React.Component<Props, State> {
                     <View style={styles.card}>
                         <Text style={styles.card_title}>{t('talents.level')}</Text>
                         <HorizontalWheelPicker
-                            items={_.map(this.levels, (time, idx) =>
-                                ({label: time+'', value: idx})
-                            )}
-                            onSelect={(descriptionShown) => this.setState({descriptionShown})}
+                            data={this.levels}
+                            selectedItem={descriptionShown}
+                            onChange={(position) => this.setState({descriptionShown: this.levels[position]})}
                         />
                     </View>
                     <View style={styles.card}>
