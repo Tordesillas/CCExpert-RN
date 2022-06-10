@@ -63,6 +63,10 @@ class Simulators extends React.Component<Props> {
             title: props.t('breakthrough-levels.title'),
             icon: Images.breakthrough_levels,
             navigationPage: 'BreakthroughLevels'
+        }, {
+            title: props.t('relic.title'),
+            icon: Images.relic,
+            navigationPage: 'Relic'
         }];
     }
 

@@ -24,3 +24,6 @@ export {default as DungeonDetails} from './advices/DungeonDetails';
 export {default as EnchantmentDetails} from './encyclopedia/EnchantmentDetails';
 export {default as PetDetails} from './encyclopedia/PetDetails';
 export {default as TalentDetails} from './encyclopedia/TalentDetails';
+export {default as Insignias} from './encyclopedia/Insignias';
+export {default as InsigniaDetails} from './encyclopedia/InsigniaDetails';
+export {default as Relic} from './simulators/Relic';

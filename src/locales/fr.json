@@ -41,6 +41,10 @@
     "level": "Niveau",
     "description": "Description"
   },
+  "insignias": {
+    "title": "Badges",
+    "title-details": "Badge"
+  },
   "enchantments": {
     "title": "Enchantements",
     "title-details": "Enchantement"
@@ -95,5 +99,8 @@
   },
   "breakthrough-levels": {
     "title": "Super évolution"
+  },
+  "relic": {
+    "title": "Relique"
   }
 }

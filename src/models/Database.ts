@@ -13,6 +13,7 @@ export default class Database {
         await this.loadHeroes();
         await this.loadDungeons();
         await this.loadTalents();
+        await this.loadInsignias();
         await this.loadPets();
         await this.loadArchdemons();
         await this.loadHeroesRoll();
@@ -46,6 +47,14 @@ export default class Database {
         const {length} = res.rows;
         for (let i = 0; i < length; i++) {
             Sets.get().addTalent(res.rows.item(i));
+        }
+    }
+
+    async loadInsignias() {
+        const [res] = await this.db!.executeSql('SELECT * from insignias');
+        const {length} = res.rows;
+        for (let i = 0; i < length; i++) {
+            Sets.get().addInsignia(res.rows.item(i));
         }
     }
 

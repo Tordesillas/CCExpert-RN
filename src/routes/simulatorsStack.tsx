@@ -2,7 +2,7 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import i18next from 'i18next';
 import {
-    AttackSpeed, BreakthroughLevels, Destiny, Dodge, Equipment, GuildWar, Inscription, PetLevel, Protectors,
+    AttackSpeed, BreakthroughLevels, Destiny, Dodge, Equipment, GuildWar, Inscription, PetLevel, Protectors, Relic,
     RollSimulator, Simulators, SkinLevel, TalentLevel
 } from '../pages';
 import {containerWithTriangle, defaultNavigationOptions} from './navigationHelper';
@@ -126,6 +126,15 @@ export default function SimulatorsStackScreen() {
                 options={{
                     ...defaultNavigationOptions,
                     title: i18next.t('breakthrough-levels.title'),
+                    headerRight: () => containerWithTriangle()
+                }}
+            />
+            <SimulatorsStack.Screen
+                name="Relic"
+                component={Relic}
+                options={{
+                    ...defaultNavigationOptions,
+                    title: i18next.t('relic.title'),
                     headerRight: () => containerWithTriangle()
                 }}
             />

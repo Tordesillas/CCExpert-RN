@@ -1,7 +1,17 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import i18next from 'i18next';
-import {EnchantmentDetails, Enchantments, Encyclopedia, PetDetails, Pets, TalentDetails, Talents} from '../pages';
+import {
+    EnchantmentDetails,
+    Enchantments,
+    Encyclopedia,
+    InsigniaDetails,
+    Insignias,
+    PetDetails,
+    Pets,
+    TalentDetails,
+    Talents
+} from '../pages';
 import {containerWithTriangle, defaultNavigationOptions} from './navigationHelper';
 
 const EncyclopediaStack = createStackNavigator();
@@ -28,6 +38,15 @@ export default function EncyclopediaStackScreen() {
                 }}
             />
             <EncyclopediaStack.Screen
+                name="Insignias"
+                component={Insignias}
+                options={{
+                    ...defaultNavigationOptions,
+                    title: i18next.t('insignias.title'),
+                    headerRight: () => containerWithTriangle()
+                }}
+            />
+            <EncyclopediaStack.Screen
                 name="Enchantments"
                 component={Enchantments}
                 options={{
@@ -46,6 +65,24 @@ export default function EncyclopediaStackScreen() {
                 }}
             />
             <EncyclopediaStack.Screen
+                name="Talent"
+                component={TalentDetails}
+                options={{
+                    ...defaultNavigationOptions,
+                    title: i18next.t('talents.title-details'),
+                    headerRight: () => containerWithTriangle()
+                }}
+            />
+            <EncyclopediaStack.Screen
+                name="Insignia"
+                component={InsigniaDetails}
+                options={{
+                    ...defaultNavigationOptions,
+                    title: i18next.t('insignias.title-details'),
+                    headerRight: () => containerWithTriangle()
+                }}
+            />
+            <EncyclopediaStack.Screen
                 name="Enchantment"
                 component={EnchantmentDetails}
                 options={{
@@ -60,15 +97,6 @@ export default function EncyclopediaStackScreen() {
                 options={{
                     ...defaultNavigationOptions,
                     title: i18next.t('pets.title-details'),
-                    headerRight: () => containerWithTriangle()
-                }}
-            />
-            <EncyclopediaStack.Screen
-                name="Talent"
-                component={TalentDetails}
-                options={{
-                    ...defaultNavigationOptions,
-                    title: i18next.t('talents.title-details'),
                     headerRight: () => containerWithTriangle()
                 }}
             />

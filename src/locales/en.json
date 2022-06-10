@@ -41,6 +41,10 @@
     "level": "Level",
     "description": "Description"
   },
+  "insignias": {
+    "title": "Insignias",
+    "title-details": "Insignia"
+  },
   "enchantments": {
     "title": "Enchantments",
     "title-details": "Enchantment"
@@ -95,5 +99,8 @@
   },
   "breakthrough-levels": {
     "title": "Breakthrough levels"
+  },
+  "relic": {
+    "title": "Relic"
   }
 }

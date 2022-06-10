@@ -20,6 +20,10 @@ class Encyclopedia extends React.Component<Props> {
             icon: Images.talents,
             navigationPage: 'Talents'
         }, {
+            title: props.t('insignias.title'),
+            icon: Images.insignias,
+            navigationPage: 'Insignias'
+        }, {
             title: props.t('enchantments.title'),
             icon: Images.enchantments,
             navigationPage: 'Enchantments'

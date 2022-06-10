@@ -4,12 +4,14 @@ import Dungeon from './Dungeon';
 import Pet from './Pet';
 import Archdemon from './Archdemon';
 import HeroRoll from './HeroRoll';
+import Insignia from './Insignia';
 
 export default class Sets {
     static instance: Sets;
     heroes: Array<Hero>;
     dungeons: Array<Dungeon>;
     talents: Array<Talent>;
+    insignias: Array<Insignia>;
     pets: Array<Pet>;
     archdemons: Array<Archdemon>;
     heroesRoll: Array<HeroRoll>;
@@ -18,6 +20,7 @@ export default class Sets {
         this.heroes = [];
         this.dungeons = [];
         this.talents = [];
+        this.insignias = [];
         this.pets = [];
         this.archdemons = [];
         this.heroesRoll = [];
@@ -48,6 +51,14 @@ export default class Sets {
 
     addTalent(talent: any) {
         this.talents.push(new Talent(talent));
+    }
+
+    getInsignia(insigniaNameFR: string): Insignia {
+        return this.insignias.find(insignia => insignia.nameFR === insigniaNameFR)!;
+    }
+
+    addInsignia(insignia: any) {
+        this.insignias.push(new Insignia(insignia));
     }
 
     getPet(petNameFR: string): Pet {
